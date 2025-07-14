@@ -26,6 +26,16 @@
     font-weight: bold;
 }
 
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+
 /* Enhanced Feedback */
 .answer-explanation {
     margin-top: 10px;
@@ -232,4 +242,72 @@ body {
     .control-btn {
         width: 100%;
     }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .quiz-container {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .quiz-container {
+    padding: 10px;
+    width: 100%;
+  }
+
+  input, button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  h1, h2, .timer {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background-color: #fdfdfd;
+}
+
+h1, h2 {
+  color: #5a2fc2;
+}
+
+button {
+  background-color: #5a2fc2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #8b5cf6;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
