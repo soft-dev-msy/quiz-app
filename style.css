@@ -311,3 +311,18 @@ button:hover {
   0% {opacity: 0;}
   100% {opacity: 1;}
 }
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: hsl(calc(360 * var(--i)), 70%, 50%);
+  animation: fall 3s ease-in forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
