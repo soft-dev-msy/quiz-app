@@ -1,4 +1,16 @@
 // Quiz questions
+
+const clickSound = new Audio('https://www.myinstants.com/media/sounds/button-click.mp3');
+const successSound = new Audio('https://www.myinstants.com/media/sounds/that-was-easy.mp3');
+document.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => clickSound.play());
+});
+
+function showResults(score) {
+  if (score === 5) successSound.play();
+}
+
+
 const questions = [
     {
         type: 'multiple',
@@ -181,11 +193,46 @@ function calculateScore() {
     }
 }
 
+function saveHighScore(score) {
+  const currentHigh = localStorage.getItem('highScore') || 0;
+  if (score > currentHigh) {
+    localStorage.setItem('highScore', score);
+    alert('🎉 New High Score!');
+  }
+}
+
+
 // Show results
 function showResults() {
     document.querySelector('.quiz-body').classList.add('hidden');
     resultsContainer.classList.remove('hidden');
     finalScoreElement.textContent = `Your final score is: ${score}/${questions.length}`;
+
+    function showResults(score) {
+  const resultsContainer = document.getElementById('results');
+  resultsContainer.innerHTML = `Your final score is: ${score}/5`;
+
+  if (score === 5) {
+    launchConfetti();
+  }
+}
+
+function launchConfetti() {
+  const confettiContainer = document.createElement('div');
+  confettiContainer.classList.add('confetti');
+  document.body.appendChild(confettiContainer);
+
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti-piece';
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.animationDelay = Math.random() * 3 + 's';
+    confettiContainer.appendChild(confetti);
+  }
+
+  setTimeout(() => confettiContainer.remove(), 4000);
+}
+
     
     // Provide feedback based on score
     const percentage = (score / questions.length) * 100;
